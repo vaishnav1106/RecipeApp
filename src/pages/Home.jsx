@@ -10,17 +10,18 @@ function Home({ favorites, toggleFavorite }) {
 
   const navigate = useNavigate();
 
-  // here we are using the API to load mixed recipe have to display
+  // on first load mixed recipe have to display
   useEffect(() => {
     loadRandomRecipes();
   }, []);
 
-  // making search function to find the recipe as we like
-  const fetchRecipe = async (query) => {
+  // search function to find the recipe as we like
+  const fetchRecipes = async (query) => {
     try {
       setLoading(true);
+
       const res = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s${query}`,
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,
       );
 
       setRecipes(res.data.meals || []);
@@ -31,22 +32,21 @@ function Home({ favorites, toggleFavorite }) {
     }
   };
 
-  // Here we are making random mixed recipes to be present on the home page
-
+  // Load random mixed recipes
   const loadRandomRecipes = async () => {
     try {
       setLoading(true);
-      const request = [];
-      // here we are deciding how many recipe card will be there in the screen
-      for (let i = 0; i < 15; i++) {
-        request.push(
+
+      const requests = [];
+
+      for (let i = 0; i < 4; i++) {
+        requests.push(
           axios.get("https://www.themealdb.com/api/json/v1/1/random.php"),
         );
       }
-      //"We create an array of 12(for example) Promises (requests).
-      // Then, we use Promise.all to wait for all 12 to finish report will be at the same time.
-      // `````Finally, we 'clean' the data using .map to grab just the meal info and show it on the screen."
-      const responses = await Promise.all(request);
+
+      const responses = await Promise.all(requests);
+
       const mixedRecipes = responses.map((res) => res.data.meals[0]);
 
       setRecipes(mixedRecipes);
@@ -68,11 +68,11 @@ function Home({ favorites, toggleFavorite }) {
 
     // 2. Check if the search box is empty (or only has spaces)
     if (search.trim() === "") {
-      //If empty, show the 12 random recipes
+      // If empty, show the 12 random "surprise" recipes
       loadRandomRecipes();
     } else {
       // If the user typed something, go fetch those specific recipes
-      fetchRecipe(search);
+      fetchRecipes(search);
     }
   };
 
@@ -109,32 +109,32 @@ function Home({ favorites, toggleFavorite }) {
 
           {/* // here we are structuring the output to the screen how the screen gets its recipe-card display*/}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5  gap-6">
-            {recipes.map((recipes) => {
-              const isFavorites = favorites.find(
-                (item) => item.idMeal === recipes.idMeal,
+            {recipes.map((recipe) => {
+              const isFavorites = favorites.some(
+                (item) => item.idMeal === recipe.idMeal
               );
               //  here we are designing the UI of Recipe-Card How it looks.
               return (
                 <div
-                  key={recipes.idMeal}
+                  key={recipe.idMeal}
                   className="outline outline-offset-2 p-2 rounded flex flex-col "
                 >
                   {/*here the recipe image is fetching from the API */}
                   <img
-                    src={recipes.strMealThumb}
+                    src={recipe.strMealThumb}
                     className=" object-cover mb-3 rounded"
                   />
                   <div className="flex flex-col justify-end">
                     {/*here the recipe header name is fetching from the API */}
-                    <h3 className="text-yellow-600">{recipes.strMeal}</h3>{" "}
+                    <h3 className="text-yellow-600">{recipe.strMeal}</h3>{" "}
                     <p className="text-sm text-white mb-3">
-                      {recipes.strCategory}
+                      {recipe.strCategory}
                     </p>
                   </div>
                   {/* here we are placing the two button on the card  */}
                   <div className="flex justify-between">
                     <button
-                      onClick={() => navigate(`/recipe/${recipes.idMeal}`)}
+                      onClick={() => navigate(`/recipe/${recipe.idMeal}`)}
                       className="bg-yellow-600 text-black px-3 py-1 text-sm rounded"
                     >
                       View
