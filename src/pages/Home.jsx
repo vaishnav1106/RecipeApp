@@ -39,7 +39,7 @@ function Home({ favorites, toggleFavorite }) {
 
       const requests = [];
 
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 15; i++) {
         requests.push(
           axios.get("https://www.themealdb.com/api/json/v1/1/random.php"),
         );
@@ -141,7 +141,7 @@ function Home({ favorites, toggleFavorite }) {
                     </button>
 
                     {/* here we are placing the favorites button */}
-                    <button onClick={() => toggleFavorite(recipes)}>
+                    <button onClick={() => toggleFavorite(recipe)}>
                       {isFavorites ? "❤️" : "🤍"}
                     </button>
                   </div>
