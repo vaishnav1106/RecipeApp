@@ -38,20 +38,20 @@ function RecipeDetail() {
     }
   }
 
-  return(
+  return (
     <div className="bg-black min-h-screen text-white p-6 ">
       <div className="bg-[url]">
-        <h1 className="text-3xl text-yellow-400 mb-4">
-            {recipe.strMeal}
-        </h1>
-        <img 
-        src="recipe.strMealThumb" alt={recipe.strMeal} className="w-24 m-b-6 rounded">
-        </img>
+        <h1 className="text-3xl text-yellow-400 mb-4">{recipe.strMeal}</h1>
+        <img
+          src="recipe.strMealThumb"
+          alt={recipe.strMeal}
+          className="w-24 m-b-6 rounded"
+        ></img>
 
         <h2 className="text-xl"></h2>
-      </div>  
+      </div>
     </div>
-  )
+  );
 }
 
-export default RecipeDetail
+export default RecipeDetail;

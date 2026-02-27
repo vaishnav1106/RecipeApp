@@ -78,23 +78,31 @@ function Home({ favorites, toggleFavorite }) {
 
   // Here we are structuring the UI interface
   return (
-    // search bar is adding here
     <div className=" bg-linear-to-r from-[#252629]  to-[#01122b] min-h-screen text-white p-6 px-8">
-      <form onSubmit={handleSubmit}>
+      <div className="text-center p-3 ">
+        <h1 className="text-extrabold hover:animate-bounce sm:text-lg md:text-2xl lg-text-3xl ">
+          "Welcome To The World Of Food"
+        </h1>
+        <p className="text-xs hidden md:block">(place your pointer)👆</p>
+      </div>
+
+      {/* search bar is adding here */}
+      <form onSubmit={handleSubmit} className="flex justify-center">
         <input
           name="search-meals"
           type="text"
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 w-full mb-6 bg-black border-2 border-yellow-500 rounded-2xl "
+          className="w-full md:w-1/3 md/max-auto  p-2 mb-6 bg-black border-2 border-yellow-500 rounded-2xl "
         />
       </form>
 
       {loading ? (
         <Loader />
       ) : (
-        // here we are checking that if the loader is true or false if it true then we present the recipe card of desired product we searched
+        // here we are checking that if the loader is true or false if it true
+        // then we present the recipe card of desired product we searched
         // otherwise it will get the "No result found" text
         <>
           {recipes.length === 0 && <p>No results found</p>}
@@ -109,8 +117,8 @@ function Home({ favorites, toggleFavorite }) {
               return (
                 <div
                   key={recipes.idMeal}
-                  className="outline outline-offset-2 p-2 rounded flex flex-col ">
-
+                  className="outline outline-offset-2 p-2 rounded flex flex-col "
+                >
                   {/*here the recipe image is fetching from the API */}
                   <img
                     src={recipes.strMealThumb}
