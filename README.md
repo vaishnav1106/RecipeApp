@@ -1,7 +1,18 @@
-1>Here we created a React.js project on a "recipe site" using API integration, and it basically holds a Home Page where all the navigation bar is there for logo, a Favorite Button, and beside that, in the body area, we have the recipe thumb image card, which is a gateway for the detailed recipe page.
+# React + Vite
 
-2>The second stage for the favorite page is when I click on the favorite button(🤍), it turns (❤️), and the data will be set into the favorite page and and there I can list all the recipes I want. And I didn't want that card. I can just click on the (❤️) to remove the recipe from the favorite list.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-3>The third stage is when I click on the "View" button, which takes me to the Recipe detail page, where I can view all the ingredients and all the instructions to cook the recipe.
+Currently, two official plugins are available:
 
-MORE UPDATES TO COME IN FUTURE
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+
+Note: This will impact Vite dev & build performances.
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
