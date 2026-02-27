@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Loader from "../components/Loader"
+import Logo from "../assets/main-logo.png"
 
 function RecipeDetail() {
   const { id } = useParams()
@@ -40,39 +41,49 @@ function RecipeDetail() {
   }
 
   return (
-    <div className="bg-black min-h-screen text-white p-6">
+    <div className=" min-h-screen bg-linear-to-r from-[#252629]  to-[#01122b] text-white p-6 flex flex-col px-10 ">
 
-      <h1 className="text-3xl text-yellow-500 mb-4">
+      <h1 className="text-3xl font-extrabold text-white mb-4 text-center">
         {recipe.strMeal}
       </h1>
 
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
-        className="w-72 mb-6 rounded"
+        className="w-72 mb-6 rounded flex outline-2 p-2"
       />
 
-      <h2 className="text-xl text-yellow-500 mb-2">
+      <h2 className="text-xl text-yellow-500 mb-2 ">
         Category: {recipe.strCategory}
       </h2>
+       
+      <div className="rounded border-5 p-3 mb-2 flex gap-50 " >
+        <div>
+          <h2 className="text-xl text-yellow-500 font-bold mb-2 ">
+            Ingredients
+          </h2>
 
-      <h2 className="text-xl text-yellow-500 mt-6 mb-2">
-        Ingredients
-      </h2>
+          <ul className="list-disc ml-6 mb-6">
+            {ingredients.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+          {/* <img src={Logo} className="w-100 h-100 flex  "/> */}
+      </div>     
 
-      <ul className="list-disc ml-6 mb-6">
-        {ingredients.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
 
-      <h2 className="text-xl text-yellow-500 mb-2">
-        Instructions
-      </h2>
+      <div className="rounded border-5 p-3">
 
-      <p className="leading-7 whitespace-pre-line">
-        {recipe.strInstructions}
-      </p>
+        <h2 className="text-xl font-bold text-yellow-500 mb-2 ">
+          Instructions
+        </h2>
+
+        <p className="leading-7 ">
+          {recipe.strInstructions}
+        </p>
+
+      </div>  
 
     </div>
   )

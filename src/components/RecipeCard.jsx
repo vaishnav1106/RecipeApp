@@ -39,7 +39,8 @@ function RecipeDetail() {
   }
 
   return(
-    <div className="bg-black min-h-screen text-white p-6">
+    <div className="bg-black min-h-screen text-white p-6 ">
+      <div className="bg-[url]">
         <h1 className="text-3xl text-yellow-400 mb-4">
             {recipe.strMeal}
         </h1>
@@ -48,6 +49,7 @@ function RecipeDetail() {
         </img>
 
         <h2 className="text-xl"></h2>
+      </div>  
     </div>
   )
 }

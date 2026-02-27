@@ -79,7 +79,7 @@ function Home({ favorites, toggleFavorite }) {
   // Here we are structuring the UI interface
   return (
     // search bar is adding here
-    <div className=" bg-linear-to-r from-[#0f172a]  to-[#334155] min-h-screen text-white p-6 px-8">
+    <div className=" bg-linear-to-r from-[#252629]  to-[#01122b] min-h-screen text-white p-6 px-8">
       <form onSubmit={handleSubmit}>
         <input
           name="search-meals"
@@ -87,7 +87,7 @@ function Home({ favorites, toggleFavorite }) {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 w-full mb-6 bg-gray-400 border-2 border-yellow-500 rounded-2xl"
+          className="p-2 w-full mb-6 bg-black border-2 border-yellow-500 rounded-2xl "
         />
       </form>
 
