@@ -80,6 +80,10 @@ function RecipeDetail() {
 
         <p className="leading-7 ">{recipe.strInstructions}</p>
       </div>
+
+      <div className="pt-3">
+        <p className="text-sm text-center text-white animate-pulse">Click On Logo To Get Back </p>
+        </div>
     </div>
   );
 }

@@ -38,12 +38,12 @@ function Home({ favorites, toggleFavorite }) {
       setLoading(true);
       const request = [];
       // here we are deciding how many recipe card will be there in the screen
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 15; i++) {
         request.push(
           axios.get("https://www.themealdb.com/api/json/v1/1/random.php"),
         );
       }
-      //"We create an array of 12 Promises (requests).
+      //"We create an array of 12(for example) Promises (requests).
       // Then, we use Promise.all to wait for all 12 to finish report will be at the same time.
       // `````Finally, we 'clean' the data using .map to grab just the meal info and show it on the screen."
       const responses = await Promise.all(request);
