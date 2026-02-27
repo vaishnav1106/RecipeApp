@@ -10,6 +10,7 @@ function Navbar() {
         className="  cursor-pointer m-0 lg:w-15 w-8"
         onClick={() => navigate("/")}
       />
+      <h1>hello</h1>
       <button
         className="text-white font-bold"
         onClick={() => navigate("/favorites")}
